@@ -1,16 +1,15 @@
-require 'socket'
-include Socket::Constants
+require '../spolks_lib/connection'
+require '../spolks_lib/utils'
 
-port = ARGV[0] ? ARGV[0] : 2000
+opts = Utils::ArgParser.new
+opts.parse!
 
-socket = Socket.new(AF_INET, SOCK_STREAM, 0)
-sockaddr = Socket.sockaddr_in(port, "localhost")
+addr = opts[:ip] || 'localhost'
+port = opts[:port] || 2000
 
-socket.setsockopt(Socket::SOL_SOCKET,Socket::SO_REUSEADDR, true)
-socket.bind(sockaddr)
-puts "server is running on localhost:#{port}"
-
-socket.listen(5)
+socket = Connection::TCPSocket.new;
+socket.sock_bind(addr, port)
+puts "server is running on #{addr}:#{port}"
 
 loop do
   Thread.start(socket.sysaccept) do |client_fd, _|
