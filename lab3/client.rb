@@ -8,8 +8,8 @@ client = nil
 
 File.open(opts[:filepath], File::RDONLY) do |file|
     begin
-      client = Connection::TCPSocket.new
-      client.sock_connect(opts[:ip],opts[:port])
+      client = Connection::SocketTCP.new(opts[:port]opts[:addr])
+      client.sock_connect
       sent = true
 
       loop do

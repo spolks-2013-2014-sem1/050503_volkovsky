@@ -9,7 +9,7 @@ module Utils
       @optparse = OptionParser.new do |opts|
       
       opts.on(/^([0-9]{1,3}\.){3}[0-9]{1,3}$/) do |ip|
-        @options[:ip] = ip
+        @options[:addr] = ip
       end
 
       opts.on(/^[0-9]+$/) do |port|
