@@ -5,21 +5,20 @@ module Connection
   EXG_SIZE = 1024
   CON_TIMEOUT = 10 
 
-  class TCPSocket < Socket
-    def initialize
+  class SocketTCP < Socket
+    def initialize(port,addr)
       super(Socket::AF_INET, Socket::SOCK_STREAM, 0)
       setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEADDR, true)
+      @sockaddr = Socket.sockaddr_in(port, addr)
     end
     
-    def sock_bind(addr,port)
-      sockaddr = Socket.sockaddr_in(port, addr)
-      bind(sockaddr)
+    def sock_bind
+      bind(@sockaddr)
       listen(1)
     end
 
-    def sock_connect(addr,port)
-      sockaddr = Socket.sockaddr_in(port, addr)
-      connect(sockaddr)
+    def sock_connect()
+      connect(@sockaddr)
     end
   end
 end
