@@ -1,14 +1,14 @@
 require '../spolks_lib/connection'
 require '../spolks_lib/utils'
 
-options = Utils::ArgParser.new
-options.parse!
+opts = Utils::ArgParser.new
+opts.parse!
 
 server, income = nil
 addr = opts[:ip] || 'localhost'
 port = opts[:port] || 2000
 
-File.open(options[:filepath], File::CREAT|File::TRUNC|File::WRONLY) do |file|
+File.open(opts[:filepath], File::CREAT|File::TRUNC|File::WRONLY) do |file|
     begin
       server = Connection::TCPSocket.new
       server.sock_bind(addr, port)

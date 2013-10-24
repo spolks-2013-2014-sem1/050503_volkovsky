@@ -1,9 +1,9 @@
 require 'socket'
 
-EXG_SIZE = 1024
-CON_TIMEOUT = 10
-
 module Connection
+  
+  EXG_SIZE = 1024
+  CON_TIMEOUT = 10 
 
   class TCPSocket < Socket
     def initialize

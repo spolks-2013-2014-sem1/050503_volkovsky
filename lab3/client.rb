@@ -1,14 +1,15 @@
 require '../spolks_lib/connection'
 require '../spolks_lib/utils'
 
-options = Utils::ArgParser.new
-options.parse!
+opts = Utils::ArgParser.new
+opts.parse!
 
 client = nil
 
-File.open(options[:filepath], File::RDONLY) do |file|
+File.open(opts[:filepath], File::RDONLY) do |file|
     begin
-      client = Connection::TCPSocket.new(options[:port], options[:ip])
+      client = Connection::TCPSocket.new
+      client.sock_connect(opts[:ip],opts[:port])
       sent = true
 
       loop do
