@@ -33,7 +33,7 @@ File.open(opts[:filepath], File::CREAT|File::TRUNC|File::WRONLY) do |file|
       end
     ensure 
       server.close if server
-      income.close if server
+      income.close if income
     end
   end
 
