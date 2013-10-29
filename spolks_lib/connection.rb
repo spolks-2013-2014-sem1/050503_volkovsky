@@ -9,9 +9,9 @@ module Connection
     def initialize(port,addr)
       super(Socket::AF_INET, Socket::SOCK_STREAM, 0)
       setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEADDR, true)
-      @sockaddr = Socket.sockaddr_in(port, addr)
+      @sockaddr = Socket.sockaddr_in(port, addr) 
     end
-    
+
     def sock_bind
       bind(@sockaddr)
       listen(1)
@@ -27,8 +27,8 @@ module Connection
       super(Socket::AF_INET, Socket::SOCK_DGRAM, 0)
       setsockopt(Socket::SOL_SOCKET, Socket::SO_REUSEADDR, true)
       @sockaddr = Socket.sockaddr_in(port, addr)
-    end
-    
+    end    
+
     def sock_bind
       bind(@sockaddr)
     end
