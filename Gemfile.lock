@@ -1,0 +1,14 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    bindata (1.6.0)
+    ffi (1.9.3)
+    process_shared (0.1.7)
+      ffi (~> 1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bindata (~> 1.6.0)
+  process_shared (~> 0.1.7)

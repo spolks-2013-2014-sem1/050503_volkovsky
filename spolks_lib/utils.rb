@@ -25,6 +25,16 @@ module Utils
         opts.on('-u') do 
           @options[:udp] = true
         end
+
+        @options[:listen] = false
+        opts.on('-l') do 
+          @options[:listen] = true
+        end
+
+        @options[:verbose] = false
+        opts.on('-v') do 
+          @options[:verbose] = true
+        end
       end
     end
 
