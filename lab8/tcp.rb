@@ -2,7 +2,7 @@ MSG = '?'
 
 
 def tcp_client(opts)
-  file = File.open(opts[:file], 'r')
+  file = File.open(opts[:filepath], 'r')
   client = Network::SocketTCP.new(opts[:port], opts[:addr])
   client.sock_connect
 
