@@ -19,7 +19,7 @@ def udp_client(opts)
     break unless rs or ws
     break if sent and done
 
-    data, sent, seek = file.read(Connection::CHUNK_SIZE),
+    data, sent, seek = file.read(Connection::EXG_SIZE),
         false, seek + 1 if sent
 
     ws.each do |s|
@@ -41,7 +41,7 @@ end
 
 def udp_server(opts)
   processes = []
-  num = opts[:num] ? opts[:num] : 7
+  num = 7
 
   packet = Connection::Packet.new
   mutex = ProcessShared::Mutex.new
